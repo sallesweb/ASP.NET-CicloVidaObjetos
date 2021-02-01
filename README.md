@@ -8,6 +8,8 @@ Para demonstrar as diferenças, foram implementadas três interfaces específica
 ## Cenário 1 - DI no middleware
 > **Nota:** Para injetar um serviço scoped no middleware não utilize a injeção no construtor, isso gerará uma exceção em tempo de execução pois forçará o serviço scoped a se comportar como um serviço singleton. Para resolver isso, injete o serviço como parâmetro nos métodos *Invoke* ou *InvokeAsync* do middleware.
 
+![Injeção de Dependência no middleware](Images/ResultadoMiddleware.PNG "Injeção de Dependência no middleware")
+
 ### Resultado
 #### *Lifetime Transient*
 - Ao injetar o serviço pelo construtor não obtive o resultado esperado, conforme a imagem acima, estão circulados em amarelo os valores de cada requisição. Esperava-se uma instância diferente a cada requisição, no entanto a instância permaneceu a mesma nas cinco requisições simulando um lifetime *singleton*.
@@ -21,6 +23,8 @@ Para demonstrar as diferenças, foram implementadas três interfaces específica
 - Obtive o resultado esperado. Independente da injeção de dependência ser feita pelo construtor ou por parâmetro no middleware, ao injetar o serviço, seu lifetime permanece o mesmo duranto todo o tempo de vida da aplicação.
 
 ## Cenário 2 - DI no construtor do controller
+![Injeção de Dependência no construtor do controller](Images/ResultadoController.PNG "Injeção de Dependência no construtor do controller")
+
 ### Resultado
 #### *Lifetime Transient*
 - A cada vez que o serviço é injetado, cria-se uma nova instância.
