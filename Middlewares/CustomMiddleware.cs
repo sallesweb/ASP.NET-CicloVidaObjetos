@@ -23,7 +23,7 @@ namespace ServiceLifetimes
             this._singletondOperation = singletondOperation;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext, IOperationTransient transientOperation, IOperationScoped scopedOperation, IOperationSingleton singletondOperation, IOperationTransient t2, IOperationScoped s2, IOperationSingleton si2)
+        public async Task InvokeAsync(HttpContext httpContext, IOperationTransient transientOperation, IOperationScoped scopedOperation, IOperationSingleton singletondOperation)
         {
             var log = @"
 {0}TRANSIENT{0}SCOPED{0}SINGLETON{0}
@@ -38,10 +38,6 @@ DI por parâmetro:             {2}{0}  {3}{0}     {5}{0}";
                     scopedOperation.OperationId,
                     this._singletondOperation.OperationId,
                     singletondOperation.OperationId));
-
-            this._logger.LogInformation(t2.OperationId);
-            this._logger.LogInformation(s2.OperationId);
-            this._logger.LogInformation(si2.OperationId);
 
             await this._next(httpContext);
         }
