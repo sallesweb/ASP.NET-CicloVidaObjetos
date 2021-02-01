@@ -1,8 +1,9 @@
 # ASP.NET-ServiceLifetimes
-Projeto criado baseado no template Web API do ASP.NET 5, com o objetivo de analisar os diferentes *lifetimes* do serviço.
+Projeto criado baseado no template Web API do ASP.NET 5, com o objetivo de analisar os diferentes *lifetimes*.
   1. Transient
   1. Scoped
   1. Singleton
+
 Para demonstrar as diferenças, foram implementadas três interfaces específicas para cada *lifetime* (IOperationTransient, IOperationScoped e IOperationSingleton) representando uma operação com uma propriedade OperationId. Dependendo de qual interface foi injetada, o container de serviços proverá a mesma ou diferentes instâncias da operação.
 
 ## Cenário 1 - DI no middleware
